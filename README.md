@@ -1,5 +1,5 @@
 # timer
 Online timer displaying the current date and time
 
-#tools
+## tools
 Built using HTML, CSS and JavaScript.
