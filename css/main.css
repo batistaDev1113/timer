@@ -9,14 +9,12 @@ body {
   height: 100vh;
   width: 100vw;
   color: #fff;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
+  background-size: cover;
 }
 
 #time {
-  display: flex;
-  width: 80vw;
+  max-width: 80vw;
   margin: 90px auto;
 }
 #timeHour,
@@ -26,11 +24,12 @@ body {
 #year,
 #day,
 #am-pm {
-  width: 30vw;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+  width: 50%;
+  margin: 10px;
+  float: left;
   padding: 15px;
-  flex-direction: column;
+
   background: #485563; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -62,19 +61,4 @@ header {
 
 header i.far.fa-clock {
   margin-right: 20px;
-}
-
-/* media queries for Ipad */
-@media all and (max-width: 769px) {
-  #timeHour,
-  #timeMin,
-  #timeSec,
-  #month,
-  #year,
-  #day,
-  #am-pm {
-    width: 50%;
-    flex-wrap: wrap;
-    overflow: hidden;
-  }
 }

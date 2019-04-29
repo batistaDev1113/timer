@@ -10,6 +10,7 @@ const seconds = document.querySelector('h2.effect');
 let meridiem = document.querySelector('div#am-pm h2');
 
 
+
 //array of months
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -30,10 +31,19 @@ function updateClock() {
 updateClock();
 
 function updateMeridiem(currentHour) {
-  hour.innerHTML = currentHour % 12;
-  meridiem.innerHTML = 'PM';
-  if (currentHour % 12 == 0) {
-    hour.innerHTML = (currentHour % 12) + 1;
+  if (currentHour >= 12) {
+    meridiem.innerHTML = 'PM';
+  }
+  else {
     meridiem.innerHTML = 'AM';
   }
+  if (currentHour % 12 === 0) {
+    hour.innerHTML = currentHour;
+
+  }
+  else {
+    hour.innerHTML = currentHour % 12;
+  }
+
 }
+
