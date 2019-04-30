@@ -10,7 +10,7 @@ const seconds = document.querySelector('h2.effect');
 let meridiem = document.querySelector('div#am-pm h2');
 
 
-
+let updatedMin;
 //array of months
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -19,12 +19,14 @@ function updateClock() {
   const d = new Date();
   updateMeridiem(d.getHours());
   sec.innerHTML = d.getSeconds();
-  min.innerHTML = d.getMinutes();
+  updatedMin = d.getMinutes();
+  updateMin(updatedMin);
   let monthTrack = months[d.getMonth()];
   month.innerHTML = monthTrack;
   day.innerHTML = d.getDate();
   year.innerHTML = d.getFullYear();
   seconds.classList.toggle('effect');
+
   setTimeout(updateClock, 1000);
 }
 
@@ -47,3 +49,11 @@ function updateMeridiem(currentHour) {
 
 }
 
+function updateMin(minutes) {
+  if (minutes <= 9) {
+    min.innerHTML = `0${minutes}`;
+  }
+  else {
+    min.innerHTML = `${minutes}`;
+  }
+}
