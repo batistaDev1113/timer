@@ -14,25 +14,8 @@ let updatedMin;
 //array of months
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-// function to update Date object
-function updateClock() {
-  const d = new Date();
-  updateMeridiem(d.getHours());
-  sec.innerHTML = d.getSeconds();
-  updatedMin = d.getMinutes();
-  updateMin(updatedMin);
-  let monthTrack = months[d.getMonth()];
-  month.innerHTML = monthTrack;
-  day.innerHTML = d.getDate();
-  year.innerHTML = d.getFullYear();
-  seconds.classList.toggle('effect');
-
-  setTimeout(updateClock, 1000);
-}
-
-updateClock();
-
-function updateMeridiem(currentHour) {
+//update meridiem
+let updateMeridiem = currentHour => {
   if (currentHour >= 12) {
     meridiem.innerHTML = 'PM';
   }
@@ -49,7 +32,8 @@ function updateMeridiem(currentHour) {
 
 }
 
-function updateMin(minutes) {
+//update minutes
+let updateMin = (minutes) => {
   if (minutes <= 9) {
     min.innerHTML = `0${minutes}`;
   }
@@ -57,3 +41,24 @@ function updateMin(minutes) {
     min.innerHTML = `${minutes}`;
   }
 }
+
+// function to update Date object
+let updateClock = () => {
+  const d = new Date();
+  updateMeridiem(d.getHours());
+  sec.innerHTML = d.getSeconds();
+  updatedMin = d.getMinutes();
+  updateMin(updatedMin);
+  let monthTrack = months[d.getMonth()];
+  month.innerHTML = monthTrack;
+  day.innerHTML = d.getDate();
+  year.innerHTML = d.getFullYear();
+  seconds.classList.toggle('effect');
+
+  setTimeout(updateClock, 1000);
+}
+
+updateClock();
+
+
+
